@@ -53,17 +53,12 @@ let user_id;
       // Handle the error
     }
 
-    // Convert the results to a JSON string
+  
     const json = JSON.stringify(result);
-
-    // Send the JSON data in the response
     const data = JSON.parse(json);
-    // console.log(data.recordsets[0][0].member_row_id);
     user_id =  data.recordsets[0][0].member_row_id;
-    // user_id = 77;
-    // res.send(json);
-
     console.log("Gotten user id ==>", user_id);
+
     const query2 = `Select transaction_date, request_id, transaction_status,product_amount,amount_charged,customer_id from transactions  where member_row_id = '${user_id}' Order by transaction_date Desc`;
     
     sql.query((query2), (err, result2)=> {
@@ -73,15 +68,8 @@ let user_id;
          // Handle the error
          console.log(err);
        }
-    
-       // Convert the results to a JSON string
        console.log(result2);
-      //  const json = JSON.stringify(result2.recordsets)
         const json = JSON.stringify(result2.recordsets[0]);
-    
-       // Send the JSON data in the response
-      //  const data = JSON.parse(json);
-
         res.send(json);
     
     });
