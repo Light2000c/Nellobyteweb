@@ -10,6 +10,7 @@ const config = {
     user: "nellobyte",
     password: "}R:SS,\\[k:Os>wW1",
     database: "nellobytesystems_com",
+    connectionTimeout: 100000,
     pool: {
         max: 10,
         min: 0,
